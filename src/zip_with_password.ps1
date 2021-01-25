@@ -1,11 +1,15 @@
 # zip_with_password
 # (c) 2021 yo16
 
-# 今日の日付
-$today = Get-Date -UFormat "%Y%m%d"
+
 
 # １個目のファイルのベースファイル名
 $base_file_name = (Get-ChildItem $args[0]).BaseName
+
+
+# 今日の日付
+$today = Get-Date -UFormat "%Y%m%d"
+
 
 # zipファイル名
 $zip_file_name = "{0}_{1}.zip" -f $today, $base_file_name
