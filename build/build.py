@@ -15,6 +15,8 @@ def main():
 	
 	# 実行用のbatファイルを書く
 	with open(RELEASE_FILE, mode="w", encoding="shift-jis") as fw:
+		fw.write("@echo off\n\n")
+		
 		# PS1ファイル生成部分
 		fw.write(f"echo,>{PS1_FILE_SJ}\n")
 		for l in lines:
@@ -37,6 +39,17 @@ def main():
 		
 		# zip_with_password.ps1を呼ぶ
 		fw.write(f"powershell -NoProfile -ExecutionPolicy Unrestricted {PS1_FILE} %*\n")
+		fw.write("\n")
+		
+		# いろいろなファイルを消す
+		fw.write("del /Q encode_sj2utf8.ps1\n")
+		fw.write("del /Q zip_with_password.ps1\n")
+		fw.write("del /Q zip_with_password.ps1_sj\n")
+		fw.write("del /Q zip_with_password.sh\n")
+		fw.write("\n")
+		
+		
+		#fw.write(f"pause\n")
 		
 		
 	
